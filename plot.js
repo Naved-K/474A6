@@ -12,9 +12,9 @@ const msm = {
 }
 const small_msm = {
 	width: 500,
-	height: 500,
-	marginAll: 50,
-	marginLeft: 80
+	height: 400,
+	marginAll: 100,
+	marginLeft: 120
 }
 
 window.onload = function () {
@@ -148,7 +148,7 @@ function plotPopulation(country, toolChart) {
 				return mapFunctions.yScale(d.population)
 			}))
 
-	makeLabels(toolChart, small_msm, "Year", "", "Population");
+	makeLabels(toolChart, small_msm, "", "Year", "Population");
 }
 
 function drawAxes(limits, x, y, svgContainer, msm) {
@@ -164,7 +164,7 @@ function drawAxes(limits, x, y, svgContainer, msm) {
 		return xScale(xValue(d));
 	};
 
-	let xAxis = d3.axisBottom().scale(xScale);
+	let xAxis = d3.axisBottom().tickFormat(d3.format("d")).scale(xScale);
 	svgContainer.append("g")
 		.attr('transform', 'translate(0, ' + (msm.height - msm.marginAll) + ')')
 		.call(xAxis);
